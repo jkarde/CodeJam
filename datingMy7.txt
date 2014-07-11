@@ -1,0 +1,260 @@
+class Dating
+    {
+        
+        String Dates(String circle, int k)
+        {
+            string dates = string.Empty;
+            //Your code goes here
+
+            char[]  finalArray = new char[10];
+            char[] value = circle.ToCharArray();
+            int arraylength = value.Length;
+            
+            List<char> isUpper = new List<char>();
+            List<char> isLower = new List<char>();
+            int listLowerindex = 0;
+            int listUpperindex =0;
+
+
+            int pos = 0;
+            
+            int finalint = 0;
+            List<char> remainingList = new List<char>();
+            for ( int i= 0; i < value.Length; i++)
+            {
+                remainingList.Add(value[i]);
+
+            }
+
+            for (int i = 0; i < value.Length; i++) 
+            {
+                if (char.IsUpper(value[i]))
+                {
+                    //isUpper[upper++] = value[i];
+                    isUpper.Add(value[i]);
+
+                }
+                else 
+                {
+                    isLower.Add(value[i]);
+
+                }
+                
+            }
+
+            isUpper.Sort();
+            isLower.Sort();
+            int listUppercount = isUpper.Count;
+            int listLowercount = isLower.Count;
+
+            int position = (k-1) % value.Length;
+            
+            
+            Console.WriteLine("position {0}", position);
+
+            char firstchar = value[position];
+
+            char[] firstarray = new char[value.Length];
+
+            
+            if (char.IsUpper(firstchar))
+            {
+                if (!checkArray(firstchar, finalArray))
+                {
+                    finalArray[finalint++] = firstchar;
+                    remainingList.Remove(firstchar);
+                    Console.WriteLine(finalArray[finalint]);
+                    for (int i = 0; i < isUpper.Count; i++)
+                    {
+                        if ((!checkArray(isLower.ElementAt(i), finalArray)))
+                        {
+                            finalArray[finalint++] = isLower[i];
+                            char c = isLower[i];
+
+                            remainingList.Remove(c);
+                            break;
+
+
+                            Console.WriteLine(finalArray[finalint]);
+                               
+                        }
+                    }
+
+
+                }
+                else
+                {
+
+                }
+
+            }
+            else {
+                if (!checkArray(firstchar, finalArray))
+                {
+                    finalArray[finalint++] = firstchar;
+                    remainingList.Remove(firstchar);
+                    Console.WriteLine(finalArray[finalint]);
+                    for (int i = 0; i < isUpper.Count; i++)
+                    {
+                        if ((!checkArray(isUpper.ElementAt(i), finalArray)))
+                        {
+                            finalArray[finalint++] = isUpper[i];
+                            remainingList.Remove(finalArray[finalint]);
+                            char c = isUpper[i];
+                            remainingList.Remove(c);
+                            break;
+                            Console.WriteLine(finalArray[finalint]);
+                         
+
+                        }
+                    }
+
+
+                }
+                else
+                {
+
+                }
+            }
+
+             int upper = 0;
+
+            do
+            {
+                int nextPos = nextPositionOfArray(k, remainingList, finalArray, position - 1);
+                char nextchar = remainingList[nextPos];
+
+                char[] temparray = new char[remainingList.Count];
+                for (int i = 0; i < temparray.Length; i++) 
+                {
+                    temparray[i] = remainingList[i];
+
+                }
+                if (char.IsUpper(nextchar))
+                {
+                    if (!checkArray(nextchar, finalArray))
+                    {
+                        finalArray[finalint++] = nextchar;
+                        remainingList.Remove(nextchar);
+                        for (int i = 0; i < isUpper.Count; i++)
+                        {
+                            if ((!checkArray(isUpper.ElementAt(i), finalArray)))
+                            {
+                                finalArray[finalint++] = isUpper[i];
+                                remainingList.Remove(finalArray[finalint]);
+                                char c = isUpper[i];
+                                remainingList.Remove(c);
+                                break;
+                                Console.WriteLine(finalArray[finalint]);
+
+
+                            }
+                        }
+
+
+                    }
+                }
+                else {
+                    if (!checkArray(nextchar, finalArray))
+                    {
+                        finalArray[finalint++] = nextchar;
+                        remainingList.Remove(nextchar);
+                        for (int i = 0; i < isUpper.Count; i++)
+                        {
+                            if ((!checkArray(isUpper.ElementAt(i), finalArray)))
+                            {
+                                finalArray[finalint++] = isUpper[i];
+                                remainingList.Remove(finalArray[finalint]);
+                                char c = isUpper[i];
+                                remainingList.Remove(c);
+                                break;
+                                Console.WriteLine(finalArray[finalint]);
+
+
+                            }
+                        }
+
+
+                    }
+                }
+    
+                
+                upper++;
+
+            } while (upper < listUppercount-1 );
+
+
+            
+            string outputstring = "";
+
+            for (int i = 0; i < finalArray.Length; i++) 
+            {
+                outputstring = outputstring + finalArray[i];
+
+            }
+
+
+
+
+            Console.WriteLine(outputstring);
+            return outputstring;
+        }
+
+        public int nextPositionOfArray( int k, List<char> value,char [] finalArray,int currentPos){
+
+            int nextpos = 0;
+            int count = 0; 
+            int listcount = value.Count;
+
+            
+            int position = (k ) % value.Count;
+
+
+            //code her
+            //end
+
+
+            return position;
+                    
+         }
+        public bool checkArray(char value, char[] checkArray) 
+        {
+            bool flag =false;
+
+            for (int i = 0; i < checkArray.Length; i++) 
+            {
+                if (checkArray[i] == value)
+                {
+                    flag= true;
+                    break;
+
+
+                }
+                else 
+                {
+                    flag= false;
+                }
+            }
+
+            return flag;
+
+        }
+
+
+
+        #region Testing code Do not change
+        public static void Main(String[] args)
+        {
+            String input = Console.ReadLine();
+            Dating dating = new Dating();
+
+            do
+            {
+                string[] values = input.Split(',');
+                Console.WriteLine(dating.Dates(values[0], Int32.Parse(values[1])));
+                input = Console.ReadLine();
+            } while (input != "-1");
+        }
+        #endregion
+    }
+}
