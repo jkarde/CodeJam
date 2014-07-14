@@ -15,9 +15,8 @@ namespace Codejam
             int answer = 0;
 
             int index1 = Array.IndexOf(test, -1);
-
-	//my chages	
-
+	
+	
             if (index1 >= 3)
             {
                 int i = index1;
@@ -43,6 +42,7 @@ namespace Codejam
                    }
 
             }
+		//my next changes  made.
             else if ( index1 <3){
 
                 int i = index1;
