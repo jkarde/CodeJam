@@ -9,7 +9,7 @@ namespace Codejam
     {
         public int Complete(int[] test)
         {
-           
+           //code start
             int answer = 0;
 
             int index1 = Array.IndexOf(test, -1);
