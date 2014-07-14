@@ -1,2 +1,3 @@
 hello world
 change made by tempbranch
+# This is an unwanted but staged comment
