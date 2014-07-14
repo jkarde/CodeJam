@@ -1,4 +1,4 @@
-﻿//chages
+﻿//chages made
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +9,8 @@ namespace Codejam
     {
         public int Complete(int[] test)
         {
+           
+           //this chagnes has been made
            //code start
             int answer = 0;
 
