@@ -9,6 +9,7 @@ namespace Codejam
     {
         public string getTargetNumber(string alien_number, string source_language, string target_language)
         {
+            //object created    
             FindAlienNumber source = new FindAlienNumber() { languagestring = source_language };
             FindAlienNumber target = new FindAlienNumber() { languagestring = target_language };
 
