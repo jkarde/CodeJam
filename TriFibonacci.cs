@@ -14,6 +14,8 @@ namespace Codejam
 
             int index1 = Array.IndexOf(test, -1);
 
+	//my chages	
+
             if (index1 >= 3)
             {
                 int i = index1;
