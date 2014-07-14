@@ -70,7 +70,7 @@ namespace Codejam
 
             return answer;
         }
-
+		// my next second changes
         public int checktriFibonacci(int[] test,int index)
         {
            
